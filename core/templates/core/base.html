@@ -28,6 +28,9 @@
                 <a class="nav-link" href="{% url 'home' %}">Inicio</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{% url 'libros:libros' %}">Libros</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{% url 'events:events' %}">Eventos</a>
               </li>
               <li class="nav-item">
@@ -45,6 +48,9 @@
               {% else %}
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'messenger:list' %}">Mensajes</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'libros:create' %}">Publicar</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
