@@ -2,72 +2,118 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
-    <!-- Estilos -->
-    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'core/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'core/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- css slider -->
+    <link rel="stylesheet" href="{% static 'core/css/slider/style.css' %}" >
+    <!-- end css slider -->
   </head>
   <body>
-    <body>
-      <!-- Navegación -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Dropdown Structure Eventos -->
+    <ul id="dropdown2" class="dropdown-content">
+      <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+      <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+      <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+    </ul>
+    <!-- Dropdown Structure Libro -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+      <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+      <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+    </ul>
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'home' %}" class="brand-logo"><img src="{% static 'core/img/logo.png' %}"></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'home' %}">Inicio</a></li>
+          <li><a href="{% url 'funciona' %}">Nosotros</a></li>
+          <li><a href="{% url 'libros:libros' %}">Libros</a></li>
+          <li><a href="{% url 'events:events' %}">Eventos</a></li>
+          <li><a href="{% url 'profiles:list' %}">Perfiles</a></li>
+          {% if not request.user.is_authenticated %}
+            <li><a href="{% url 'login' %}">Ingresar</a></li>
+            <li><a href="{% url 'signup' %}">Registrar</a></li>
+          {% else %}
+            <li><a href="{% url 'messenger:list' %}">Mensajes</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Gestionar<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url 'logout' %}">Salir</a></li>
+          {% endif %}
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="{% url 'home' %}">Inicio</a></li>
+          <li><a href="{% url 'funciona' %}">Nosotros</a></li>
+          <li><a href="{% url 'libros:libros' %}">Libros</a></li>
+          <li><a href="{% url 'events:events' %}">Eventos</a></li>
+          <li><a href="{% url 'profiles:list' %}">Perfiles</a></li>
+          {% if not request.user.is_authenticated %}
+            <li><a href="{% url 'login' %}">Ingresar</a></li>
+            <li><a href="{% url 'signup' %}">Registrar</a></li>
+          {% else %}
+            <li><a href="{% url 'messenger:list' %}">Mensajes</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Gestionar<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{% url 'logout' %}">Salir</a></li>
+          {% endif %}
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+    <!-- Contenido -->
+    {% block content %}{% endblock %}
+    <div id="index-banner" class="parallax-container">
+      <div class="section no-pad-bot">
         <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}">E-Book</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="ned">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'libros:libros' %}">Libros</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'events:events' %}">Eventos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'profiles:list' %}">Perfiles</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav">
-              {% if not request.user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'signup' %}">Registrar</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'messenger:list' %}">Mensajes</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{% url 'libros:create' %}">Publicar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Salir</a>
-                </li>
-              {% endif %}
+          <br><br>
+          <h1 class="header center orange-text text-accent-4">Unete a la comunidad</h1>
+          <div class="row center">
+            <h5 class="header col s12 light">Dona, Vende, Intercambia y lo mejor disfruta y comparte con otros amante de la literatura</h5>
+          </div>
+          <div class="row center">
+            <a href="{% url 'signup' %}" id="download-button" class="btn-large waves-effect waves-light amber accent-4">Registrar</a>
+          </div>
+          <br><br>
+        </div>
+      </div>
+      <div class="parallax"><img src="{% static 'core/img/fondo/background3.jpg' %}" alt="img 1"></div>
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer teal accent-4">
+      <div class="container">
+        <div class="row">
+          <div class="col l9 s12">
+            <img src="{% static 'core/img/logo_ubook_blanco.png' %}">
+            <p class="grey-text text-darken-4">Website para el intercambio, donación y venta de libros, el website se crea con la finalidad de incentivar la lectura y elevar el conocimiento, ahorrando dinero y evitando que se deterioren libros que no se usan mientras otros si los necesitan realmente.</p>
+          </div> 
+          <div class="col l3 s12">
+            <h5 class="white-text">Secciones</h5>
+            <ul>
+              <li><a class="white-text" href="{% url 'libros:libros' %}">Libros</a></li>
+              <li><a class="white-text" href="{% url 'profiles:list' %}">Perfiles</a></li>
+              <li><a class="white-text" href="{% url 'events:events' %}">Eventos</a></li>
+              <li><a class="white-text" href="{% url 'funciona' %}">Como Funciona</a></li>
             </ul>
           </div>
         </div>
-      </nav>
-      <!-- Contenido -->
-      {% block content %}{% endblock %}
-      <!-- Javascript -->
-      <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-      <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-      <script src="{% static 'core/js/main.js' %}"></script>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          Made by <a class="orange-text text-darken-4" href="{% url 'home' %}">PentaCoders</a>
+        </div>
+      </div>
+    </footer>
+    <!-- Javascript -->
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'core/js/materialize.js' %}"></script>
+    <script src="{% static 'core/js/init.js' %}"></script>
+    <!-- js slider  -->
+    <script  src="{% static 'core/js/slider/script.js' %}"></script>
+    <!-- end js slider -->
   </body>
 </html>

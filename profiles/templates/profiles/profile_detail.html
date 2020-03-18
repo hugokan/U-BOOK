@@ -4,25 +4,26 @@
 {% block content %}
 <main role="main">
   <div class="container">
-    <div class="row mt-3">
-      <div class="col-md-9 mx-auto mb-5">
+    <div class="row">
+      <div class="col s12 m10">
         <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
           <div class="row">
             <!-- Avatar -->
-            <div class="col-md-2">
+            <br>
+            <div class="col s3">
               {% if profile.avatar %}
-                <img src="{{profile.avatar.url}}" class="img-fluid">
+                <img src="{{profile.avatar.url}}" class="circle responsive-img">
               {% else %}
-                <img src="{% static 'registration/img/no-avatar.jpg' %}" class="img-fluid">
+                <img src="{% static 'registration/img/no-avatar.jpg' %}" class="circle responsive-img">
               {% endif %}
               {% if request.user != profile.user %}
-                <a href="{% url 'messenger:start' profile.user.username %}" class="btn btn-primary btn-sm btn-block mt-3">
-                  Enviar mensaje
+                <a href="{% url 'messenger:start' profile.user.username %}" class="btn btn-large waves-effect waves-light amber accent-4">
+                  Enviar Mensaje
                 </a>
               {% endif %}
             </div>
             <!-- Campos -->
-            <div class="col-md-10">
+            <div class="col s9">
               <h3>{{profile.user}}</h3>
               {% if profile.bio %}<p>{{profile.bio}}</p>{% endif %}
               {% if profile.link %}<p><a href="{{profile.link}}" target="_blank">{{profile.link}}</a></p>{% endif %}

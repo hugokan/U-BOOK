@@ -1,21 +1,92 @@
 {% load static %}
-{% if request.user.is_authenticated %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <span class="navbar-brand" href="#"><i>Administrar</i></span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nep" aria-controls="nep" aria-expanded="false">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="nep">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'libros:create' %}"><i>Publicar Libro</i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'libros:libros' %}"><i>Listar Libros</i></a>
-        </li>
+<!--TABS-->
+  <br>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active teal-text text-accent-4" href="#todos">Todos</a></li>
+        <li class="tab col s3"><a class="teal-text text-accent-4" href="#donar">Donar</a></li>
+        <li class="tab col s3"><a class="teal-text text-accent-4" href="#vender">Vender</a></li>
+        <li class="tab col s3"><a class="teal-text text-accent-4" href="#inter">Intercambiar</a></li>
       </ul>
     </div>
+    <div id="todos" class="col s12">
+      <div class="row">
+        {% for libro in libro_list|dictsort:"id" reversed %}
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image responsive-img">
+              <img src="../../../media/{{libro.image}}">
+              <a href="{% url 'libros:libro' libro.id libro.title|slugify %}" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-4"><i class="material-icons">search</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title"><b>{{object.title}}</b></span>
+              <p><b>{{libro.author}}</b></p>
+              <p><b>Status:</b> {{libro.status}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="donar" class="col s12">
+      <div class="row">
+        {% for libro in libro_list|dictsort:"id" reversed %}
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image responsive-img">
+              <img src="../media/{{libro.image}}">
+              <a href="{% url 'libros:libro' libro.id libro.title|slugify %}" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-4"><i class="material-icons">search</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title"><b>{{object.title}}</b></span>
+              <p><b>{{libro.author}}</b></p>
+              <p><b>Status:</b> {{libro.status}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div id="vender" class="col s12">
+      <div class="row">
+        {% for libro in libro_list|dictsort:"id" reversed %}
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image responsive-img">
+              <img src="../media/{{libro.image}}">
+              <a href="{% url 'libros:libro' libro.id libro.title|slugify %}" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-4"><i class="material-icons">search</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title"><b>{{object.title}}</b></span>
+              <p><b>{{libro.author}}</b></p>
+              <p><b>Status:</b> {{libro.status}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>   
+    </div>
+
+    <div id="inter" class="col s12">
+      <div class="row">
+        {% for libro in libro_list|dictsort:"id" reversed %}
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image responsive-img">
+              <img src="../media/{{libro.image}}">
+              <a href="{% url 'libros:libro' libro.id libro.title|slugify %}" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-4"><i class="material-icons">search</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title"><b>{{object.title}}</b></span>
+              <p><b>{{libro.author}}</b></p>
+              <p><b>Status:</b> {{libro.status}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>   
+    </div>
   </div>
-</nav>
-{% endif %}

@@ -10,7 +10,8 @@ class EventForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class': 'form-control'}),
             'order': forms.NumberInput(attrs={'class': 'form-control', 'placeholder':'Orden'}),
         }
+        
         labels = {
-            'title':'', 'order':'', 'content':''
+            'title':'Titulo', 'order':'Orden', 'content':'Contenido'
         }
         

@@ -15,5 +15,5 @@ class LibroForm(forms.ModelForm):
             'status': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Status'}),
         }
         labels = {
-            'title':'', 'author':'', 'categories':'', 'content': '', 'status': '', 'user': 'Publicado por'
+            'title':'Titulo', 'author':'Autor', 'categories':'Categorias', 'content': 'Sinopsis', 'status': 'Status', 'user': 'Publicado por'
         }

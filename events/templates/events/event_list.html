@@ -2,21 +2,25 @@
 {% load static %}
 {% block title %}Eventos{% endblock %}
 {% block content %}
-{% include 'events/includes/events_menu.html' %}
 <main role="main">
-  <div class="container mb-4">
+  <br>
+  <div class="container">
     {% for event in event_list|dictsort:"id" reversed %}
-      <div class="row mt-3">
-        <div class="col-md-9 mx-auto">
-          <h2 class="mb-4">{{event.title}}</h2>
-          <div>
-            <p>{{event.content|striptags|safe|truncatechars:"200"}}</p>
-            <p><a href="{% url 'events:event' event.id event.title|slugify %}">Leer más</a>              
-              {% if request.user.is_staff %}
-                | <a href="{% url 'events:update' event.id %}">Editar</a>
-                | <a href="{% url 'events:delete' event.id %}">Borrar</a>
-              {% endif %}             
-            </p>
+      <div class="row">
+        <div class="col s12">
+          <div class="card grey lighten-5">
+            <div class="card-content">
+              <span class="card-title teal-text text-accent-4"><h5><b>{{event.title}}</b></h5></span>
+              <p>{{event.content|striptags|safe|truncatechars:"200"}}</p>           
+              </p>
+            </div>
+            <div class="card-action right-align">
+              <p><a class="orange-text text-darken-4" href="{% url 'events:event' event.id event.title|slugify %}">Leer más</a>              
+                {% if request.user.is_staff %}
+                  | <a href="{% url 'events:update' event.id %}">Editar</a>
+                  | <a href="{% url 'events:delete' event.id %}">Borrar</a>
+                {% endif %} 
+            </div>
           </div>
         </div>
       </div>

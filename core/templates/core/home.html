@@ -2,10 +2,58 @@
 {% load static %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-<div class="container">
-  <div style="padding-top:50px; text-align:center;">
-    <h1>{{title}}</h1>
-    <p class="lead">Sistema de Intercambio de Libros</p>
+
+  <!-- slider -->
+  <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="{% static 'core/img/slider/banner1.jpg' %}"> 
+        <div class="caption center-align">
+          <h3 class="amber-text text-accent-4">{{title}}</h3>
+          <h5 class="light grey-text text-lighten-3">Bienvenidos a este espacio literario, de libre intercambio, donación y venta de libros</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'core/img/slider/banner2.jpg' %}"> 
+        <div class="caption left-align">
+          <h3 class="amber-text text-accent-4">Intercambio</h3>
+          <h5 class="light grey-text text-lighten-3">Comparte los libros de tu biblioteca personal y adquiere otros ejemplares que siempre has querido leer</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'core/img/slider/banner3.jpg' %}"> 
+        <div class="caption right-align">
+          <h3 class="amber-text text-accent-4">Donación</h3>
+          <h5 class="light grey-text text-lighten-3">No dejes en el olvido los libros, dónalos a la persona correcta para que le sea de provecho</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'core/img/slider/banner4.jpg' %}"> 
+        <div class="caption center-align">
+          <h3 class="amber-text text-accent-4">Ventas</h3>
+          <h5 class="light grey-text text-lighten-3">Si tenés libros en óptimas condiciones pero no tienes más espacio, te ofrecemos la opción de venderlos</h5>
+        </div>
+      </li>
+    </ul>
   </div>
-</div>
+  <!-- end slider -->
+  <!--TABS-->
+  <div class="container">
+    <div class="row col s12">
+      <p>Bienvenido, si eres apasionado por los libros, sabes cuán difícil puede ser emocionalmente deshacerse de un libro, incluso si sabes que nunca lo volverás a leer.<p> 
+      <p>Pero si ya no tienes espacio y deseas donarlo aquí podrás encontrar un buen hogar para tus libros y conocer a alguien que los vaya a apreciar.<p>
+      <p>Además, puedes estar interesado en leer un montón de libros, y quedarte con los que más te interesen, tienes la opción de intercambiar ese libro que ya no usas por otro que si desees leer.</p> 
+      <p>Es un gran crimen cuando un libro termina en la basura, y existen muchas personas que pudieron sacarle más provecho.</p> 
+      <p><b>U-BooK</b> mantiene los libros en circulación, y encuentra nuevos lectores para ellos. Si no te interesa intercambiar para obtener libros gratuitos, puedes donar y/o vender los que tienes actualmente.</p>
+      <br>
+      <div class="center">
+        <a href="{% url 'libros:libros' %}" id="download-button" class="btn-large waves-effect waves-light amber accent-4">Ver Libros</a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+
+
+  <!--fin TABS-->
+
 {% endblock %}

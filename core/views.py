@@ -9,3 +9,6 @@ class HomePageView(TemplateView):
 
 class SamplePageView(TemplateView):
     template_name = "core/sample.html"
+    
+class FuncionaPageView(TemplateView):
+    template_name = "core/funciona.html"
