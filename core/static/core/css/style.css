@@ -11,6 +11,31 @@ nav .brand-logo {
   color: #00bfa5;
 }
 
+nav {
+  color: #fff;
+  background-color: #00bfa5;
+}
+
+.pagination li a {
+  color: #ffab00;
+}
+
+.pagination li.active {
+  background-color: #ffab00;
+}
+
+.pagination li {
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  vertical-align: top;
+  height: 50px;
+}
+
+a {
+  color: #ffab00;
+}
+
 p {
   line-height: 2rem;
 }
