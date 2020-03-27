@@ -8,9 +8,9 @@
       <div class="col S12">
         <h3 class="amber-text text-accent-4">Borrar evento</h3>
         <div>
-            <form action="" method="post">{% csrf_token %}
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
                 <p>¿Estás seguro de que quieres borrar: <b>"{{ object }}"</b>?</p>
-                <input type="submit" class="btn-large waves-effect waves-light red accent-4" value="Sí, borrar el Evento" />
+                <input type="submit" class="btn-small waves-effect waves-light red accent-4" value="Sí, borrar el Evento" />
             </form>
         </div>
       </div>

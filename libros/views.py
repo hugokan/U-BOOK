@@ -19,9 +19,15 @@ class LoginRequired(object):
 # Create your views here.
 class LibroListView(ListView):
     model = Libro
+    paginate_by = 12
 
 class LibroDetailView(DetailView):
     model = Libro
+    
+class LibroUserView(ListView):
+    model = Libro
+    template_name = "libros/libro_user.html"
+    paginate_by = 12
 
 @method_decorator(login_required, name='dispatch')
 class LibroCreate(CreateView):

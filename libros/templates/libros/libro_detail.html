@@ -1,12 +1,14 @@
-  
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}{{libro.title}}{% endblock %}
 {% block content %}
+
+
 <main role="main">
   <div class="container">
 
     <div class="row">
+      <br><br>
       <div class="col s12 m3"><img src="../../../media/{{libro.image}}" class="responsive-img" alt="portada libro"></div>
         <div class="col s12 m9">
           <h4>{{object.title}}</h4>
@@ -16,10 +18,9 @@
           <h5>Para: {{libro.status}}</h5>
           <h6>Publicado por: {{libro.user}}</h6>
           <div class="row center">
-            <a href="{% url 'profiles:list' %}" id="download-button" class="btn-small waves-effect waves-light amber accent-4">Enviar Mensaje</a>
+            <a href="http://127.0.0.1:8000/profiles/{{libro.user}}/" id="download-button" class="btn-small waves-effect waves-light amber accent-4">Contactar</a>
           </div>
-          <br>
-          
+          <br>       
           {% if request.user.is_authenticated %}
             | <a href="{% url 'libros:update' libro.id %}">Editar</a>
             | <a href="{% url 'libros:delete' libro.id %}">Borrar</a>

@@ -19,6 +19,7 @@ class StaffRequiredMixin(object):
 # Create your views here.
 class EventListView(ListView):
     model = Event
+    paginate_by = 4
 
 class EventDetailView(DetailView):
     model = Event

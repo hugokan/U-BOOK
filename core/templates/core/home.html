@@ -3,6 +3,8 @@
 {% block title %}Inicio{% endblock %}
 {% block content %}
 
+
+
   <!-- slider -->
   <div class="slider">
     <ul class="slides">
@@ -49,11 +51,30 @@
       <div class="center">
         <a href="{% url 'libros:libros' %}" id="download-button" class="btn-large waves-effect waves-light amber accent-4">Ver Libros</a>
       </div>
-      <br><br>
+      
     </div>
   </div>
 
 
   <!--fin TABS-->
+  <br><br>
+      <!--listado de libros-->
+      <div class="row">
+        {% for libro in libro_list|dictsort:"id" reversed %}
+        <div class="col s12 m2">
+          <div class="card">
+            <div class="card-image responsive-img">
+              <img src="../media/{{libro.image}}">
+              <a href="{% url 'libros:libro' libro.id libro.title|slugify %}" class="btn-floating btn-large halfway-fab waves-effect waves-light orange darken-4"><i class="material-icons">search</i></a>
+            </div>
+            <div class="card-content">
+              <span class="card-title"><b>{{object.title}}</b></span>
+              <p><b>{{libro.author}}</b></p>
+              <p><b>Status:</b> {{libro.status}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
 
 {% endblock %}

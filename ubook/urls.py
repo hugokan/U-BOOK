@@ -18,7 +18,6 @@ from django.urls import path, include
 from events.urls import events_patterns
 from profiles.urls import profiles_patterns
 from messenger.urls import messenger_patterns
-from books.urls import books_patterns
 from libros.urls import libros_patterns
 from django.conf import settings
 
@@ -33,8 +32,6 @@ urlpatterns = [
     path('profiles/', include(profiles_patterns)),
     # Paths de Messenger
     path('messenger/', include(messenger_patterns)),
-    # Paths de book
-    path('books/', include(books_patterns)),
     # Paths de libros
     path('libros/', include(libros_patterns)),
 ]

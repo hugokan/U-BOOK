@@ -17,15 +17,25 @@
   <body>
     <!-- Dropdown Structure menu movil -->
     <ul id="dropdown2" class="dropdown-content">
-      <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
-      <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
-      <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+      {% if not request.user.is_staff %}
+        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+        <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+      {% else %}
+        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+        <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+        <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+      {% endif %}
     </ul>
     <!-- Dropdown Structure menu web -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
-      <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
-      <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+      {% if not request.user.is_staff %}
+        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+        <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+      {% else %}
+        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+        <li><a href="{% url 'libros:create' %}">Publicar Libros</a></li>
+        <li><a href="{% url 'events:create' %}">Crear Eventos</a></li>
+      {% endif %}
     </ul>
     <nav class="white" role="navigation">
       <div class="nav-wrapper container">
@@ -75,7 +85,7 @@
             <h5 class="header col s12 light">Dona, Vende, Intercambia y lo mejor disfruta y comparte con otros amantes de la lectura.</h5>
           </div>
           <div class="row center">
-            <a href="{% url 'signup' %}" id="download-button" class="btn-large waves-effect waves-light amber accent-4">Registrar</a>
+            <a href="{% url 'signup' %}" id="download-button" class="btn-small waves-effect waves-light amber accent-4">Registrar</a>
           </div>
           <br><br>
         </div>

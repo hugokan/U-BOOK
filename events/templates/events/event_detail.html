@@ -4,15 +4,17 @@
 {% block content %}
 <main role="main">
   <div class="container">
+    <br>
     <div class="row">
-      <div class="col s12">
-        <h4 class="teal-text text-accent-4">{{event.title}}</h4>
-        <div>
+      <div class="col s12 m6">
+        <img src="../../../media/{{event.image}}" class="responsive-img" alt="foto evento">
+      </div>
+      <div class="col s12 m6">
+        <h4 class="teal-text text-accent-4">{{event.title}}</h4>    
           {{event.content|safe}}
           {% if request.user.is_authenticated %}
             <p><a href="{% url 'events:update' event.id %}">Editar</a></p>
           {% endif %}
-        </div>
       </div>
     </div>
   </div>

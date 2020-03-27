@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'messenger',
     'events.apps.EventsConfig',
     'profiles',
-    'books',
     'libros',
 ]
 
